@@ -87,18 +87,9 @@ services:
     networks:
       - menuhub
       - dokploy-network
-    # Traefik routing. Set DOMAIN in the Environment tab to your host
-    # (e.g. veloxmenu-a-j6tcvm-e30c32-76-13-135-191.sslip.io).
-    # HTTP entrypoint ("web") because sslip.io has no TLS. For a real HTTPS
-    # domain, switch entrypoints to "websecure" and add:
-    #   traefik.http.routers.veloxmenu.tls.certresolver=letsencrypt
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=dokploy-network"
-      - "traefik.http.routers.veloxmenu.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.veloxmenu.entrypoints=web"
-      - "traefik.http.routers.veloxmenu.priority=100"
-      - "traefik.http.services.veloxmenu.loadbalancer.server.port=80"
+    # Routing is handled by Dokploy's "Domains" tab (point it at this nginx
+    # service, port 80). Do NOT also add Traefik labels here, or the two routers
+    # conflict for the same host.
 
 volumes:
   pgdata:
