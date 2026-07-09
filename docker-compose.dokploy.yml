@@ -91,21 +91,9 @@ services:
     networks:
       - menuhub
       - dokploy-network
-    # Traefik routing for Docker Compose services is done via labels (the Domains
-    # UI is for Application-type services). Set DOMAIN in the Environment tab to
-    # your hostname. Leave the veloxmenu Domains tab EMPTY so there is only one
-    # router for the host.
-    #
-    # sslip.io is HTTP-only -> entrypoint "web". For a real HTTPS domain, use
-    # entrypoint "websecure" and add:
-    #   traefik.http.routers.veloxmenu.tls.certresolver=letsencrypt
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=dokploy-network"
-      - "traefik.http.routers.veloxmenu.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.veloxmenu.entrypoints=web"
-      - "traefik.http.routers.veloxmenu.priority=1000"
-      - "traefik.http.services.veloxmenu.loadbalancer.server.port=80"
+    # Routing is handled by Dokploy's Domains tab (add a domain on THIS nginx
+    # service, container port 80). Keep exactly one domain there, and make sure
+    # PUBLIC_SITE_URL in the Environment tab uses that exact same hostname.
 
 volumes:
   pgdata:
