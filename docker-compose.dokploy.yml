@@ -41,8 +41,10 @@ services:
       DEBUG: "false"
       SECRET_KEY: ${SECRET_KEY}
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-menuhub}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-menuhub}
-      COOKIE_SECURE: "true"
-      COOKIE_SAMESITE: lax
+      # Set COOKIE_SECURE=false only for HTTP-only hosts (e.g. sslip.io). Use
+      # true whenever you serve over HTTPS (a real domain or *.traefik.me).
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      COOKIE_SAMESITE: ${COOKIE_SAMESITE:-lax}
       BACKEND_CORS_ORIGINS: ${PUBLIC_SITE_URL}
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL}
       CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-}
