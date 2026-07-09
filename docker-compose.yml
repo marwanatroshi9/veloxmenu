@@ -28,7 +28,9 @@ services:
     expose:
       - "8000"
     networks:
-      - menuhub
+      menuhub:
+        aliases:
+          - vm-backend
 
   frontend:
     build:
@@ -43,7 +45,9 @@ services:
     expose:
       - "3000"
     networks:
-      - menuhub
+      menuhub:
+        aliases:
+          - vm-frontend
 
   nginx:
     image: nginx:1.27-alpine
