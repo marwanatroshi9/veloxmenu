@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+
+# Env & secrets
+.env
+*/.env
+!.env.example
+!*/.env.example
+
+# Local dev SQLite (used by backend/run_local.py)
+*.db
+
+# Certs
+nginx/certs/*
+!nginx/certs/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

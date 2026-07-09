@@ -1,0 +1,8 @@
+# Normalize line endings. Shell scripts MUST be LF so they run inside the
+# Linux containers (a CRLF entrypoint.sh fails with "bad interpreter").
+* text=auto eol=lf
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

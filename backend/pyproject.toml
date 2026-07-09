@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+testpaths = ["app/tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning:jose.*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
