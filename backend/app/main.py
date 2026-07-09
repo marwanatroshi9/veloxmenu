@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import os
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 
@@ -63,3 +66,12 @@ def health() -> dict[str, str]:
 
 
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)
+
+# Serve locally-stored uploads (when Cloudinary is not configured). nginx proxies
+# the MEDIA_URL_PREFIX path to the backend, or can serve the volume directly.
+os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+app.mount(
+    settings.MEDIA_URL_PREFIX,
+    StaticFiles(directory=settings.UPLOAD_DIR),
+    name="media",
+)

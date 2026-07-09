@@ -19,7 +19,7 @@ from app.schemas.category import (
     CategoryUpdate,
 )
 from app.schemas.common import Message
-from app.services.cloudinary_service import CloudinaryError, upload_image
+from app.services.storage import CloudinaryError, upload_image
 
 router = APIRouter(prefix="/restaurant/categories", tags=["restaurant:categories"])
 

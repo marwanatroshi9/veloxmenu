@@ -30,7 +30,7 @@ from app.schemas.restaurant import (
     ResetPasswordResponse,
 )
 from app.services.activity import log_activity
-from app.services.cloudinary_service import CloudinaryError, upload_image
+from app.services.storage import CloudinaryError, upload_image
 from app.utils.pagination import paginate
 from app.utils.slug import unique_restaurant_slug
 

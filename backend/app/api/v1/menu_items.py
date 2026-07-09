@@ -15,7 +15,7 @@ from app.models.menu_item import MenuItem
 from app.models.restaurant import Restaurant
 from app.schemas.common import Message, Page
 from app.schemas.menu_item import MenuItemCreate, MenuItemOut, MenuItemUpdate
-from app.services.cloudinary_service import CloudinaryError, upload_image
+from app.services.storage import CloudinaryError, upload_image
 from app.utils.pagination import paginate
 
 router = APIRouter(prefix="/restaurant/menu-items", tags=["restaurant:menu-items"])

@@ -44,11 +44,17 @@ class Settings(BaseSettings):
     # --- Database ---
     DATABASE_URL: PostgresDsn
 
-    # --- Cloudinary ---
+    # --- Cloudinary (optional). If unset, uploads are stored locally on disk. ---
     CLOUDINARY_CLOUD_NAME: str | None = None
     CLOUDINARY_API_KEY: str | None = None
     CLOUDINARY_API_SECRET: str | None = None
     CLOUDINARY_FOLDER: str = "menuhub"
+
+    # --- Local image storage (used when Cloudinary is not configured) ---
+    # Directory (relative to the app working dir) where uploads are written. In
+    # Docker this is a mounted volume; images are served back at MEDIA_URL_PREFIX.
+    UPLOAD_DIR: str = "uploads"
+    MEDIA_URL_PREFIX: str = "/media"
 
     # --- Public site ---
     PUBLIC_SITE_URL: str = "http://localhost:3000"

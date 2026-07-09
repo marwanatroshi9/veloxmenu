@@ -10,7 +10,7 @@ from app.database.session import get_db
 from app.models.media import Media
 from app.models.restaurant import Restaurant
 from app.schemas.restaurant import RestaurantOut, RestaurantProfileUpdate
-from app.services.cloudinary_service import CloudinaryError, upload_image
+from app.services.storage import CloudinaryError, upload_image
 
 router = APIRouter(prefix="/restaurant", tags=["restaurant:profile"])
 

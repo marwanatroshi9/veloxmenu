@@ -19,6 +19,9 @@ COPY . .
 # repo is committed from Windows).
 RUN chmod +x entrypoint.sh
 
+# Create the uploads dir so the mounted volume inherits appuser ownership.
+RUN mkdir -p /app/uploads
+
 # Non-root runtime user.
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser

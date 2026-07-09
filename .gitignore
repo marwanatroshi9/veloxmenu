@@ -33,3 +33,7 @@ Thumbs.db
 
 # TS build cache
 *.tsbuildinfo
+
+# Local uploaded media
+uploads/
+backend/uploads/
