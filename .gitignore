@@ -30,3 +30,6 @@ nginx/certs/*
 Thumbs.db
 .idea/
 .vscode/
+
+# TS build cache
+*.tsbuildinfo
